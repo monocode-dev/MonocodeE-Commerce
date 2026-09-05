@@ -7,7 +7,7 @@ async function dbMigrate() {
                 id SERIAL PRIMARY KEY,
                 email TEXT UNIQUE NOT NULL,
                 password TEXT NOT NULL,
-                role TEXT NOT NULL
+                role TEXT NOT NULL DEFAULT 'customer'
             );
         `);
 
@@ -35,9 +35,19 @@ async function dbMigrate() {
             CREATE TABLE IF NOT EXISTS orders(
                 id SERIAL PRIMARY KEY,
                 user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-                stripe_session_id INTEGER NOT NULL,
+                stripe_session_id TEXT NOT NULL,
                 status TEXT NOT NULL,
                 total_price INTEGER NOT NULL
+            );
+        `);
+
+        await pool.query(`
+            CREATE TABLE IF NOT EXISTS order_items (
+                id SERIAL PRIMARY KEY,
+                order_id INTEGER NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
+                product_id INTEGER NOT NULL REFERENCES products(id) ON DELETE CASCADE,
+                quantity INTEGER NOT NULL,
+                price_at_purchase INTEGER NOT NULL
             );
         `);
 

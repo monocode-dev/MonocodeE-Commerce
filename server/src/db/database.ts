@@ -33,9 +33,19 @@ export interface Cart{
 export interface Order{
     id: number;
     user_id: number;
-    stripe_sesssion_id: number;
+    stripe_session_id: string;
     status: string;
     total_price: number;
 };
+
+
+export interface Order_items{
+    id: number;
+    order_id: number;
+    product_id: number;
+    quantity: number;
+    price_at_purchase: number;
+};
+
 
 export default pool;
