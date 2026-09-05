@@ -25,7 +25,8 @@ async function dbMigrate() {
         await pool.query(`
             CREATE TABLE IF NOT EXISTS cart(
                 id SERIAL PRIMARY KEY,
-                user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+                user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+                session_id TEXT,
                 product_id INTEGER NOT NULL REFERENCES products(id) ON DELETE CASCADE,
                 quantity INTEGER NOT NULL
             );
@@ -34,10 +35,12 @@ async function dbMigrate() {
         await pool.query(`
             CREATE TABLE IF NOT EXISTS orders(
                 id SERIAL PRIMARY KEY,
-                user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+                user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+                email TEXT NOT NULL,
                 stripe_session_id TEXT NOT NULL,
                 status TEXT NOT NULL,
-                total_price INTEGER NOT NULL
+                total_price INTEGER NOT NULL,
+                created_at TIMESTAMP DEFAULT NOW()
             );
         `);
 

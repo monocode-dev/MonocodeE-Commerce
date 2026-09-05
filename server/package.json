@@ -7,6 +7,7 @@
     "dev": "tsx watch src/server.ts",
     "migrate": "tsx src/db/dbMigrate.ts",
     "build": "tsc",
+    "test": "jest",
     "start": "node dist/server.js"
   },
   "keywords": [],
