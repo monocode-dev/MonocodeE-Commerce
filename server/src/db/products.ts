@@ -4,14 +4,14 @@ export async function findProducts(name?: string) : Promise<Product[]>{
     if(!name){
         const result = await pool.query(
             'SELECT * FROM products',
-        )
+        );
         return result.rows as Product[]
     }else{
         const result = await pool.query(
-            'SELECT * FROM products WHERE name = $1',
-            [name]
-        )
-        return result.rows as Product[] || null
+            'SELECT * FROM products WHERE name ILIKE $1',
+            [`%${name}%`]
+        );
+        return result.rows as Product[]
     }
 }
 
@@ -19,7 +19,7 @@ export async function addProduct(name: string, price:number, stock?:number, desc
     const result = await pool.query(
         'INSERT INTO products (name, description, price, image_url, stock) VALUES ($1, $2, $3, $4, $5) RETURNING id',
         [name, description, price, image_url, stock]
-    )
+    );
     return result.rows[0].id as number
 }
 
