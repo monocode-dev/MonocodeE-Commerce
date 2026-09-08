@@ -5,9 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "migrate": "tsx src/db/dbMigrate.ts",
+    "migrate": "tsx src/db/migration/dbMigrate.ts",
     "build": "tsc",
-    "test": "jest",
     "start": "node dist/server.js"
   },
   "keywords": [],
@@ -30,14 +29,9 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/express-session": "^1.19.0",
-    "@types/jest": "^30.0.0",
     "@types/node": "^26.4.1",
     "@types/pg": "^8.23.1",
-    "@types/supertest": "^7.2.1",
-    "jest": "^30.5.1",
-    "supertest": "^7.2.2",
-    "ts-jest": "^29.4.12",
     "tsx": "^4.23.13",
-    "typescript": "^7.0.2"
+    "typescript": "^5.9.3"
   }
 }

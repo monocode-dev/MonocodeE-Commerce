@@ -8,7 +8,7 @@
     // See also https://aka.ms/tsconfig/module
     "module": "commonjs",
     "target": "ES2020",
-    "types": ["node", "express-session", "jest"],
+    "types": ["node", "express-session"],
     "lib": ["esnext"],
 
     // Other Outputs
@@ -35,6 +35,7 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
+    "esModuleInterop": true,
   },
 
   "include": ["src/**/*"],

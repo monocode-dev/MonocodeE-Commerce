@@ -12,7 +12,6 @@ export interface User {
     email: string;
     password: string;
     role: string;
-    created_at: string;
 }
 
 export interface Product {
@@ -22,7 +21,6 @@ export interface Product {
     price: number;
     image_url: string | null;
     stock: number;
-    created_at: string;
 }
 
 export interface Cart {

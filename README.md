@@ -33,7 +33,10 @@ The application will support both **customers** and **administrators**, with rol
   - [x] Cart
   - [x] Orders
 - [ ] API routes
-- [ ] Authentication
+  - [x] Authentication
+  - [x] Products
+  - [ ] Cart
+  - [ ] Orders
 - [ ] Roles & authorization
 - [ ] Middleware
 - [ ] Stripe checkout
