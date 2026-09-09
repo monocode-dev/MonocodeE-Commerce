@@ -37,8 +37,8 @@ The application will support both **customers** and **administrators**, with rol
   - [x] Products
   - [ ] Cart
   - [ ] Orders
-- [ ] Roles & authorization
-- [ ] Middleware
+- [x] Roles & authorization
+- [x] Middleware
 - [ ] Stripe checkout
 - [ ] Order creation
 - [ ] Customer order history
