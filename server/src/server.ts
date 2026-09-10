@@ -6,8 +6,9 @@ import dotenv from "dotenv";
 import pool from "./db/migration/database";
 
 //Routers
-import authRouter from "./routes/auth";
+import authRouter from "./routes/authRoute";
 import productRouter from "./routes/productRoute"
+import cartRouter from "./routes/cartRoute"
 
 dotenv.config();
 
@@ -34,8 +35,9 @@ app.use(
   })
 );
 
-app.use("/auth", authRouter)
-app.use("/api/products", productRouter)
+app.use("/auth", authRouter);
+app.use("/api/products", productRouter);
+app.use("/api/cart", cartRouter);
 
 
 app.listen(PORT, () => {

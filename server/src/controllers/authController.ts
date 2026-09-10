@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import { findUser, addUser } from "../db/users";
+import { mergeGuestCart } from "../db/cart";
 
 //login
 export async function login(req: Request, res: Response){
@@ -17,6 +18,7 @@ export async function login(req: Request, res: Response){
 
         req.session.userId = user.id;
         req.session.role = user.role;
+        await mergeGuestCart(req.sessionID, user.id);
 
         return res.status(201).json({success: true, message: "Logged in successfully", data: { email: user.email, role: user.role }})
 
@@ -38,6 +40,7 @@ export async function signup(req: Request, res: Response){
 
         req.session.userId = user.id;
         req.session.role = user.role;
+        await mergeGuestCart(req.sessionID, user.id);
 
         return res.status(201).json({success: true, message: "Signed up successfully", data: { email: user.email, role: user.role }})
     } catch (err) {

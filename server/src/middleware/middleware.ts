@@ -13,3 +13,10 @@ export function requireAdmin(req: Request, res: Response, next: NextFunction){
     };
     next();
 }
+
+export function getCartOwner(req: Request){
+    if(req.session.userId){
+        return {user_id: req.session.userId, session_id: null}
+    }
+    return { user_id: null, session_id: req.sessionID };
+}

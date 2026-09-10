@@ -35,7 +35,7 @@ The application will support both **customers** and **administrators**, with rol
 - [ ] API routes
   - [x] Authentication
   - [x] Products
-  - [ ] Cart
+  - [x] Cart
   - [ ] Orders
 - [x] Roles & authorization
 - [x] Middleware

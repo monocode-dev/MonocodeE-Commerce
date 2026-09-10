@@ -28,7 +28,12 @@ async function dbMigrate() {
                 user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
                 session_id TEXT,
                 product_id INTEGER NOT NULL REFERENCES products(id) ON DELETE CASCADE,
-                quantity INTEGER NOT NULL
+                quantity INTEGER NOT NULL,
+                CONSTRAINT cart_owner_check CHECK (
+                    (user_id IS NOT NULL AND session_id IS NULL) OR
+                    (user_id IS NULL AND session_id IS NOT NULL)
+                )
+
             );
         `);
 
