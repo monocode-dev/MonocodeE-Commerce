@@ -32,15 +32,15 @@ The application will support both **customers** and **administrators**, with rol
   - [x] Products
   - [x] Cart
   - [x] Orders
-- [ ] API routes
+- [x] API routes
   - [x] Authentication
   - [x] Products
   - [x] Cart
-  - [ ] Orders
+  - [x] Orders
 - [x] Roles & authorization
 - [x] Middleware
-- [ ] Stripe checkout
-- [ ] Order creation
+- [x] Stripe checkout
+- [x] Order creation
 - [ ] Customer order history
 - [ ] Admin panel
 - [ ] Product management

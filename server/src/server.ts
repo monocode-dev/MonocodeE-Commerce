@@ -9,12 +9,20 @@ import pool from "./db/migration/database";
 import authRouter from "./routes/authRoute";
 import productRouter from "./routes/productRoute"
 import cartRouter from "./routes/cartRoute"
+import checkoutRouter from "./routes/checkoutRoute"
+import webhookRouter from "./routes/webhookRoute"
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const PgSession = connectPgSimple(session);
+
+app.post(
+  "/api/webhooks/stripe",
+  express.raw({ type: "application/json" }),
+  webhookRouter
+);
 
 app.use(express.json());
 
@@ -38,6 +46,7 @@ app.use(
 app.use("/auth", authRouter);
 app.use("/api/products", productRouter);
 app.use("/api/cart", cartRouter);
+app.use("/api/checkout", checkoutRouter)
 
 
 app.listen(PORT, () => {
