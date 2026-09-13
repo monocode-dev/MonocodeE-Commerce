@@ -11,6 +11,7 @@ import productRouter from "./routes/productRoute"
 import cartRouter from "./routes/cartRoute"
 import checkoutRouter from "./routes/checkoutRoute"
 import webhookRouter from "./routes/webhookRoute"
+import ordersRouter from "./routes/ordersRoute"
 
 dotenv.config();
 
@@ -47,6 +48,7 @@ app.use("/auth", authRouter);
 app.use("/api/products", productRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/checkout", checkoutRouter)
+app.use("/api/admin/orders", ordersRouter)
 
 
 app.listen(PORT, () => {

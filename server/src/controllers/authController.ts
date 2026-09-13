@@ -47,3 +47,16 @@ export async function signup(req: Request, res: Response){
         return res.status(400).json({success: false, message: 'Email Already Exists'});
     }
 }
+
+//logout
+export async function logout(req: Request, res: Response) {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).json({success: false, message: 'Could not Log Out, Please try again'});
+        }
+
+        res.clearCookie('connect.sid');
+
+        return res.status(200).json({success: true, message: 'logged out Successfully'});
+    });
+}

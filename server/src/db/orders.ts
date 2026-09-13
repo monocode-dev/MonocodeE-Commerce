@@ -1,5 +1,5 @@
 import { getCartItems } from "./cart";
-import pool from "./migration/database";
+import pool, {Order, OrderItem} from "./migration/database";
 
 export async function createOrder(
     user_id: number | null,
@@ -36,4 +36,28 @@ export async function createOrder(
          (session_id = $2 AND $2 IS NOT NULL)`,
         [user_id, session_id]
     );
+}
+
+export async function getAllOrders(): Promise<Order[]> {
+    const result = await pool.query(
+        `SELECT * FROM orders`
+    );
+    return result.rows;
+}
+
+export async function getOrderById(id: number | string): Promise<OrderItem[]> {
+    const result = await pool.query(
+        `SELECT * FROM order_items WHERE order_id = $1`,
+        [id]
+    );
+
+    return result.rows;
+}
+
+export async function updateOrderStatus(id: number | string, status: string): Promise<number | null> {
+    const result = await pool.query(
+        `UPDATE orders SET status = $1 WHERE id = $2`,
+        [status, id]
+    );
+    return result.rowCount;
 }
