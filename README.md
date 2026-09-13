@@ -41,10 +41,9 @@ The application will support both **customers** and **administrators**, with rol
 - [x] Middleware
 - [x] Stripe checkout
 - [x] Order creation
-- [ ] Customer order history
-- [ ] Admin panel
-- [ ] Product management
-- [ ] Order management
+- [x] Customer order history
+- [x] Product management
+- [x] Order management
 
 ---
 
